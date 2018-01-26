@@ -74,30 +74,32 @@ func (o *AlbumUpload) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 	}
 
 	//tt:= int64(-1)
-	fmt.Println("Params.AlbumId=",*(Params.AlbumId))
+	//fmt.Println("Params.AlbumId=",*(Params.AlbumId))
 	if(*(Params.AlbumId) == -1){ //新建
 		fmt.Println("new")
-		fmt.Println("Params.Summary is",Params.Summary)
+		//fmt.Println("Params.Summary is",Params.Summary)
 		album.Summary = *(Params.Summary)
 		album.Name = Params.Title
+		album.AuthorAvatar = Params.SubTitle
+		album.AuthorName = *(Params.Content)
 		//t := int64(-1)
 		//album.album_Id = &t
-		album.Status = *(Params.Status)
+		/*album.Status = *(Params.Status)
 		if(Params.IconUrl != ""){
 			album.Icon = Params.IconUrl
-		}
+		}*/
 		//album.User_id = *(Params.MemberID)
 		db.Table("albums").Create(&album)
 	}else{ //更新
 		//fmt.Println("edit")
 		//db.Table("sub_album_items").Where("id=?",*(Params.AlbumId)).Last(&album)
 		if(Params.IconUrl != ""){
-			fmt.Println("1",Params.IconUrl)
+			fmt.Println("1")
 			db.Exec("update albums set name=?,status=?,summary=?,icon=? where id=?",Params.Title,0,*(Params.Summary),Params.IconUrl,&(Params.AlbumId))
 		}else{
-			fmt.Println("2",Params.IconUrl,*(Params.Summary))
+			fmt.Println("2")
 			summary := *(Params.Summary)
-			db.Exec("update albums set name=?,status=?,summary=? where id=?",Params.Title,0,summary,&(Params.AlbumId))
+			db.Exec("update albums set name=?,author_avatar=?,author_name=?,summary=? where id=?",Params.Title,Params.SubTitle,Params.Content,summary,&(Params.AlbumId))
 		}
 
 	}

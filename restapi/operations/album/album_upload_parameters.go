@@ -78,6 +78,8 @@ type AlbumUploadParams struct {
 
 	AlbumId *int64
 
+
+
 }
 
 // BindRequest both binds and validates a request, it assumes that complex things implement a Validatable(strfmt.Registry) error interface
