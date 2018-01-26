@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-openapi/runtime"
 
-	models "tingtingbackend/models"
+	models "certbackend/models"
 )
 
 // OrderDetailOKCode is the HTTP code returned for type OrderDetailOK

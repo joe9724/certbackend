@@ -13,8 +13,8 @@ import (
 	_"os"
 	_"runtime"
 	_"strings"
-	"tingtingbackend/models"
-	"tingtingbackend/var"
+	"certbackend/models"
+	"certbackend/var"
 )
 
 // CategoryUploadHandlerFunc turns a function with the right signature into a category upload handler

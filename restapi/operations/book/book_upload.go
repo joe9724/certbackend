@@ -10,8 +10,8 @@ import (
 	middleware "github.com/go-openapi/runtime/middleware"
 	"fmt"
 	_"os"
-	"tingtingbackend/models"
-	"tingtingbackend/var"
+	"certbackend/models"
+	"certbackend/var"
 )
 
 // BookUploadHandlerFunc turns a function with the right signature into a book upload handler

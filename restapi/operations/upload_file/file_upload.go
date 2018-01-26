@@ -14,8 +14,8 @@ import (
 	"runtime"
 	"time"
 	"strings"
-	"tingtingbackend/models"
-	"tingtingbackend/var"
+	"certbackend/models"
+	"certbackend/var"
 	"strconv"
 )
 

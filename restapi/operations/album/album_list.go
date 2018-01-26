@@ -10,9 +10,9 @@ import (
 	_"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 	middleware "github.com/go-openapi/runtime/middleware"
-	"tingtingbackend/models"
+	"certbackend/models"
 	"fmt"
-	"tingtingbackend/var"
+	"certbackend/var"
 )
 
 // AlbumListHandlerFunc turns a function with the right signature into a album list handler

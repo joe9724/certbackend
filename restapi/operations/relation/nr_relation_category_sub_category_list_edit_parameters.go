@@ -12,7 +12,7 @@ import (
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/runtime/middleware"
 
-	models "tingtingbackend/models"
+	models "certbackend/models"
 )
 
 // NewNrRelationCategorySubCategoryListEditParams creates a new NrRelationCategorySubCategoryListEditParams object
