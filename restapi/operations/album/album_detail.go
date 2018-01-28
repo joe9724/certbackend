@@ -69,10 +69,18 @@ func (o *AlbumDetail) ServeHTTP(rw http.ResponseWriter, r *http.Request) {
 		fmt.Println(err.Error())
 	}
 	//query
-	var album models.Album
-	db.Table("albums").Where("id=?",Params.AlbumID).First(&album)
-	//data
-	response.Data = &album
+	if(Params.AlbumID!=nil){
+		var album models.Album
+		db.Table("albums").Where("id=?",Params.AlbumID).First(&album)
+		//data
+		response.Data = &album
+	}else{
+		var album models.Album
+		db.Table("albums").Where("author_name=?",Params.AuthorName).First(&album)
+		//data
+		response.Data = &album
+	}
+
 
 
 	//status

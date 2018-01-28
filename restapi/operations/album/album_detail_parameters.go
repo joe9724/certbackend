@@ -36,6 +36,8 @@ type AlbumDetailParams struct {
 	  In: query
 	*/
 	AlbumID *string
+
+	AuthorName *string
 	/*当前后台登录id
 	  In: query
 	*/
@@ -55,6 +57,11 @@ func (o *AlbumDetailParams) BindRequest(r *http.Request, route *middleware.Match
 		res = append(res, err)
 	}
 
+	qAuthorName, qhkAuthorName, _ := qs.GetOK("authorName")
+	if err := o.bindAuthorName(qAuthorName, qhkAuthorName, route.Formats); err != nil {
+		res = append(res, err)
+	}
+
 	qUserid, qhkUserid, _ := qs.GetOK("userid")
 	if err := o.bindUserid(qUserid, qhkUserid, route.Formats); err != nil {
 		res = append(res, err)
@@ -63,6 +70,20 @@ func (o *AlbumDetailParams) BindRequest(r *http.Request, route *middleware.Match
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (o *AlbumDetailParams) bindAuthorName(rawData []string, hasKey bool, formats strfmt.Registry) error {
+	var raw string
+	if len(rawData) > 0 {
+		raw = rawData[len(rawData)-1]
+	}
+	if raw == "" { // empty values pass all other validations
+		return nil
+	}
+
+	o.AuthorName = &raw
+
 	return nil
 }
 
